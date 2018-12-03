@@ -1,39 +1,32 @@
-# Guava: Google Core Libraries for Java
+# janna: hxcodes Code Support Libraries for Java
 
-[![Latest release](https://img.shields.io/github/release/google/guava.svg)](https://github.com/google/guava/releases/latest)
-[![Build Status](https://travis-ci.org/google/guava.svg?branch=master)](https://travis-ci.org/google/guava)
+[![Latest release](https://img.shields.io/github/release/hxcodes/janna.svg)](https://github.com/hxcodes/janna/releases/latest)
+[![Build Status](https://travis-ci.org/hxcodes/janna.svg?branch=master)](https://travis-ci.org/hxcodes/janna)
 
-Guava is a set of core libraries that includes new collection types (such as
+janna is a set of core libraries that includes new collection types (such as
 multimap and multiset), immutable collections, a graph library, functional
 types, an in-memory cache, and APIs/utilities for concurrency, I/O, hashing,
 primitives, reflection, string processing, and much more!
 
-Guava comes in two flavors.
+janna comes in two flavors.
 
 *   The JRE flavor requires JDK 1.8 or higher.
 *   If you need support for JDK 1.7 or Android, use the Android flavor. You can
     find the Android Guava source in the [`android` directory].
 
-[`android` directory]: https://github.com/google/guava/tree/master/android
 
-## Adding Guava to your build
+## Adding janna to your build
 
-Guava's Maven group ID is `com.google.guava` and its artifact ID is `guava`.
-Guava provides two different "flavors": one for use on a (Java 8+) JRE and one
-for use on Android or Java 7 or by any library that wants to be compatible with
-either of those. These flavors are specified in the Maven version field as
-either `27.0.1-jre` or `27.0.1-android`. For more about depending on
-Guava, see [using Guava in your build].
+janna's Maven group ID is `com.hxcodes` and its artifact ID is `janna`.
+janna provides two different "flavors": one for use on a (Java 8+) JRE.
 
-To add a dependency on Guava using Maven, use the following:
+To add a dependency on janna using Maven, use the following:
 
 ```xml
 <dependency>
-  <groupId>com.google.guava</groupId>
-  <artifactId>guava</artifactId>
-  <version>27.0.1-jre</version>
-  <!-- or, for Android: -->
-  <version>27.0.1-android</version>
+  <groupId>com.hxcodes</groupId>
+  <artifactId>janna</artifactId>
+  <version>1.0</version>
 </dependency>
 ```
 
@@ -41,32 +34,18 @@ To add a dependency using Gradle:
 
 ```gradle
 dependencies {
-  compile 'com.google.guava:guava:27.0.1-jre'
-  // or, for Android:
-  api 'com.google.guava:guava:27.0.1-android'
+  compile 'com.hxcodes:janna-1.0'
 }
 ```
 
 ## Snapshots
 
-Snapshots of Guava built from the `master` branch are available through Maven
-using version `HEAD-jre-SNAPSHOT`, or `HEAD-android-SNAPSHOT` for the Android
-flavor.
-
-- Snapshot API Docs: [guava][guava-snapshot-api-docs]
-- Snapshot API Diffs: [guava][guava-snapshot-api-diffs]
-
-## Learn about Guava
-
-- Our users' guide, [Guava Explained]
-- [A nice collection](http://www.tfnico.com/presentations/google-guava) of other helpful links
+Snapshots of janna built from the `master` branch are available through Maven
+using version `HEAD-SNAPSHOT` flavor.
 
 ## Links
 
-- [GitHub project](https://github.com/google/guava)
-- [Issue tracker: Report a defect or feature request](https://github.com/google/guava/issues/new)
-- [StackOverflow: Ask "how-to" and "why-didn't-it-work" questions](https://stackoverflow.com/questions/ask?tags=guava+java)
-- [guava-discuss: For open-ended questions and discussion](http://groups.google.com/group/guava-discuss)
+- [GitHub project](https://github.com/hxcodes/janna)
 
 ## IMPORTANT WARNINGS
 
@@ -85,28 +64,10 @@ APIs will remain (again, unless they are `@Beta`). We have no plans to start
 removing things again, but officially, we're leaving our options open in case
 of surprises (like, say, a serious security problem).
 
-3. Guava has one dependency that is needed at runtime:
-`com.google.guava:failureaccess:1.0`
-
-4. Serialized forms of ALL objects are subject to change unless noted
+3. Serialized forms of ALL objects are subject to change unless noted
 otherwise. Do not persist these and assume they can be read by a
 future version of the library.
 
-5. Our classes are not designed to protect against a malicious caller.
+4. Our classes are not designed to protect against a malicious caller.
 You should not use them for communication between trusted and
 untrusted code.
-
-6. For the mainline flavor, we unit-test the libraries using only OpenJDK 1.8 on
-Linux. Some features, especially in `com.google.common.io`, may not work
-correctly in other environments. For the Android flavor, our unit tests run on
-API level 15 (Ice Cream Sandwich).
-
-[guava-snapshot-api-docs]: https://google.github.io/guava/releases/snapshot-jre/api/docs/
-[guava-snapshot-api-diffs]: https://google.github.io/guava/releases/snapshot-jre/api/diffs/
-[Guava Explained]: https://github.com/google/guava/wiki/Home
-[Guava Beta Checker]: https://github.com/google/guava-beta-checker
-
-<!-- References -->
-
-[using Guava in your build]: https://github.com/google/guava/wiki/UseGuavaInYourBuild
-[repackage]: https://github.com/google/guava/wiki/UseGuavaInYourBuild#what-if-i-want-to-use-beta-apis-from-a-library-that-people-use-as-a-dependency

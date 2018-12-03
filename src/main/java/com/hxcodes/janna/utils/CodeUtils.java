@@ -2,6 +2,7 @@ package com.hxcodes.janna.utils;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class CodeUtils {
 	private static final String EMPTY = "";
@@ -114,8 +115,26 @@ public class CodeUtils {
 	public static <T> T or(T nullable, T defaultVal) {
 		return CodeUtils.isNotNull(nullable) ? nullable : defaultVal;
 	}
-	
+
 	public static String or(String blankable, String defaultStr) {
 		return CodeUtils.isBlank(blankable) ? defaultStr : blankable;
+	}
+
+	public static boolean eq(String str1, String str2) {
+		if (CodeUtils.isNull(str1)) {
+			return CodeUtils.isNull(str2);
+		} else {
+			return str1.equals(str2);
+		}
+	}
+
+	public static <T> void foreach(Collection<T> collect, Consumer<? super T> action) {
+		if (CodeUtils.isNotEmpty(collect)) {
+			collect.forEach(action);
+		}
+	}
+
+	public static boolean not(boolean boolVal) {
+		return !boolVal;
 	}
 }
