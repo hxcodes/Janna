@@ -11,7 +11,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.google.common.collect.Lists;
-import com.hxcodes.janna.costs.Symbol;
+import com.hxcodes.janna.costs.Symbols;
 
 public class CtrlUtils {
 	/** 可能包含真实IP信息的头参数KEY */
@@ -37,7 +37,7 @@ public class CtrlUtils {
 		List<String> addrs = Lists.newArrayList(request.getRemoteAddr());
 
 		Arrays.asList(HEADER_REAL_IP).forEach(key -> {
-			String[] temp = StringUtils.split(request.getHeader(key), Symbol.COMMA);
+			String[] temp = StringUtils.split(request.getHeader(key), Symbols.COMMA);
 			if (ArrayUtils.isNotEmpty(temp)) {
 				CollectionUtils.addAll(addrs, temp);
 			}
@@ -55,7 +55,7 @@ public class CtrlUtils {
 	}
 
 	public static String param(ServletRequest rqst, String key, String defaultStr) {
-		return StringUtils.defaultIfEmpty(param(rqst, key), defaultStr);
+		return CodeUtils.or(param(rqst, key), defaultStr);
 	}
 
 	public static String header(HttpServletRequest rqst, String key) {
@@ -63,11 +63,11 @@ public class CtrlUtils {
 	}
 
 	public static String header(HttpServletRequest rqst, String key, String defaultStr) {
-		return StringUtils.defaultIfEmpty(header(rqst, key), defaultStr);
+		return CodeUtils.or(header(rqst, key), defaultStr);
 	}
 
 	public static String find(HttpServletRequest rqst, String key) {
-		return CodeUtils.or(CtrlUtils.param(rqst, key), CtrlUtils.header(rqst, key));
+		return CtrlUtils.find(rqst, key, Symbols.EMPTY);
 	}
 
 	public static String find(HttpServletRequest rqst, String key, String defaultStr) {

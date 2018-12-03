@@ -2,7 +2,6 @@ package com.hxcodes.janna.utils;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.function.Supplier;
 
 public class CodeUtils {
 	private static final String EMPTY = "";
@@ -42,7 +41,7 @@ public class CodeUtils {
 			return EMPTY;
 		}
 
-		StringBuilder builder = new StringBuilder(len * 8);
+		StringBuffer builder = new StringBuffer(len * 8);
 		for (int i = 0; i < len; i++) {
 			builder.append(objects[i]);
 		}
@@ -112,11 +111,11 @@ public class CodeUtils {
 		return CodeUtils.isNotNull(obj) && obj.getClass().isArray();
 	}
 
-	public static <T> T create(Supplier<T> supplier) {
-		return supplier.get();
-	}
-
 	public static <T> T or(T nullable, T defaultVal) {
 		return CodeUtils.isNotNull(nullable) ? nullable : defaultVal;
+	}
+	
+	public static String or(String blankable, String defaultStr) {
+		return CodeUtils.isBlank(blankable) ? defaultStr : blankable;
 	}
 }

@@ -1,6 +1,6 @@
 package com.hxcodes.janna.costs;
 
-public interface Symbol {
+public interface Symbols {
 	String FACTORIAL = "!";
 	String AT = "@";
 	String SHARP = "#";
@@ -35,5 +35,5 @@ public interface Symbol {
 	String PERIOD = ".";
 	String SPACE = " ";
 	String NEXTLINE = System.lineSeparator();
-
+	String EMPTY = "";
 }
