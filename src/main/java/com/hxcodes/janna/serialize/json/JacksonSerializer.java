@@ -1,6 +1,7 @@
 package com.hxcodes.janna.serialize.json;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import com.hxcodes.janna.costs.DatePatterns;
 import com.hxcodes.janna.utils.CodeUtils;
 
 public class JacksonSerializer implements JsonSerializer {
 	private static ObjectMapper mapper = new ObjectMapper();
+	
+	static {
+		//mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+		mapper.setDateFormat(new SimpleDateFormat(DatePatterns.DEFAULT));
+	}
 
 	@Override
 	public <T> T fromJson(String json, Class<T> target) {

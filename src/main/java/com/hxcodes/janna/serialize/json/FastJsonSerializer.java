@@ -3,6 +3,7 @@ package com.hxcodes.janna.serialize.json;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.collect.Lists;
 import com.hxcodes.janna.utils.CodeUtils;
 
@@ -15,7 +16,8 @@ public class FastJsonSerializer implements JsonSerializer {
 
 	@Override
 	public String toJson(Object obj) {
-		return CodeUtils.isNull(obj) ? EMPTY_OBJECT : JSONObject.toJSONString(obj);
+		return CodeUtils.isNull(obj) ? EMPTY_OBJECT
+				: JSONObject.toJSONString(obj, SerializerFeature.WriteDateUseDateFormat);
 	}
 
 	@Override
